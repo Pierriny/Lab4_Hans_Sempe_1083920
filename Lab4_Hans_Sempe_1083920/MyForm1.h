@@ -7,21 +7,14 @@
 namespace Lab4HansSempe1083920 {
 
 	using namespace System;
-	using namespace System::Collections::Generic;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	using namespace std;
 	using namespace System::IO;
-	using namespace System::Data::OleDb;
-	using namespace System::Text;
-	using namespace System::Threading::Tasks;
-	using namespace Microsoft::VisualBasic;
-	
-	
-	
+
+
 	/// <summary>
 	/// Resumen de MyForm1
 	/// </summary>
@@ -47,15 +40,26 @@ namespace Lab4HansSempe1083920 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridView^ dgvMatriz;
 	protected:
-	private: System::Windows::Forms::Button^ button1;
+
+	protected:
+
+	private: System::Windows::Forms::OpenFileDialog^ ofdImportar;
+
+
+	private: System::Windows::Forms::SaveFileDialog^ sfdExportar;
+	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::TextBox^ txtPath;
+	private: System::Windows::Forms::Button^ BTTNimportar;
+
+
 
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -64,88 +68,158 @@ namespace Lab4HansSempe1083920 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			this->dgvMatriz = (gcnew System::Windows::Forms::DataGridView());
+			this->ofdImportar = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->sfdExportar = (gcnew System::Windows::Forms::SaveFileDialog());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->txtPath = (gcnew System::Windows::Forms::TextBox());
+			this->BTTNimportar = (gcnew System::Windows::Forms::Button());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvMatriz))->BeginInit();
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// dataGridView1
+			// dgvMatriz
 			// 
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(23, 117);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(685, 264);
-			this->dataGridView1->TabIndex = 0;
+			this->dgvMatriz->AllowUserToAddRows = false;
+			this->dgvMatriz->AllowUserToDeleteRows = false;
+			this->dgvMatriz->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgvMatriz->Location = System::Drawing::Point(12, 15);
+			this->dgvMatriz->Name = L"dgvMatriz";
+			this->dgvMatriz->Size = System::Drawing::Size(338, 404);
+			this->dgvMatriz->TabIndex = 5;
 			// 
-			// button1
+			// ofdImportar
 			// 
-			this->button1->Location = System::Drawing::Point(23, 64);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(130, 47);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"Importar Datos";
-			this->button1->UseVisualStyleBackColor = true;
+			this->ofdImportar->FileName = L"openFileDialog1";
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->txtPath);
+			this->groupBox1->Controls->Add(this->BTTNimportar);
+			this->groupBox1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->groupBox1->Location = System::Drawing::Point(356, 12);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(237, 89);
+			this->groupBox1->TabIndex = 6;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"UImportar Archivo de Texto";
+			// 
+			// txtPath
+			// 
+			this->txtPath->Location = System::Drawing::Point(84, 22);
+			this->txtPath->Name = L"txtPath";
+			this->txtPath->ReadOnly = true;
+			this->txtPath->Size = System::Drawing::Size(147, 20);
+			this->txtPath->TabIndex = 1;
+			// 
+			// BTTNimportar
+			// 
+			this->BTTNimportar->Location = System::Drawing::Point(6, 19);
+			this->BTTNimportar->Name = L"BTTNimportar";
+			this->BTTNimportar->Size = System::Drawing::Size(72, 25);
+			this->BTTNimportar->TabIndex = 0;
+			this->BTTNimportar->Text = L"Importar Datos";
+			this->BTTNimportar->UseVisualStyleBackColor = true;
+			this->BTTNimportar->Click += gcnew System::EventHandler(this, &MyForm1::BTTNimportar_Click);
 			// 
 			// MyForm1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(740, 406);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->dataGridView1);
+			this->ClientSize = System::Drawing::Size(605, 431);
+			this->Controls->Add(this->groupBox1);
+			this->Controls->Add(this->dgvMatriz);
 			this->Name = L"MyForm1";
 			this->Text = L"MyForm1";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvMatriz))->EndInit();
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 
-	//	DataView ImportarDatos(string nombrearchivo)
-	//	{
-	//		string conexion = ("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = {0}; Extended Properties = 'Excel 12.0;' ", nombrearchivo);
-	//
-	//		OleDbConnection^ conector =  gcnew OleDbConnection();
+	private: void ReestablecerMatriz() {
+		dgvMatriz->Rows->Clear();
+		dgvMatriz->Columns->Clear();
+		dgvMatriz->ColumnHeadersVisible = false;
+		dgvMatriz->RowHeadersVisible = false;
+	}
 
-	//		conector->Open();
-
-			//OleDbConnection^ consulta = gcnew OleDbConnection("select * from [Denuncias por Violencia Intrafa]", conector);
-
-	//		OleDbDataAdapter^ adaptador = gcnew OleDbDataAdapter
-	//		{ 
-				//SelectCommand = consulta 
-	//		};
-			
-
-	//		DataSet^ ds = gcnew DataSet();
-
-	//		adaptador->Fill(ds);
-
-	//		conector->Close();
-
-	//		return ds->Tables[0]->DefaultView;
-	//	}
-
-	// https : // www . youtube . com / watch ? v = r d e m h _ 8 s B S c
-
-		void bubbleSort(int a[])
+	void bubbleSort(int a[])
+	{
+		for (int i = 0; i < 5; i++)
 		{
-			for (int i = 0; i < 5; i++)
-			{
-				for (int j = 0; j < 5; j++)
+		    for (int j = 0; j < 5; j++)
+		    {
+				for (int g = 0; g < 5; g++)
 				{
-					for (int g = 0; g < 5; g++)
+					if (a[j] > a[j + 1])
 					{
-						if (a[j] > a[j + 1])
-						{
-							int temp = a[j];
-							a[j] = a[j + 1];
-							a[j + 1] = temp;
-						}
+						int temp = a[j];
+						a[j] = a[j + 1];
+						a[j + 1] = temp;
 					}
 				}
 			}
 		}
+	}
+	
+	private: System::Void BTTNimportar_Click(System::Object^ sender, System::EventArgs^ e) {
+		//Se agregan los filtros al OpenFileDialog
+		ofdImportar->Filter = "Archivos separados por coma (csv) | *.csv";
+		ofdImportar->FileName = "";
 
-	};
+		//Unicamnte si el reultado de la apertura del archivo es exitosa se carga el archivo
+		if (ofdImportar->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			ReestablecerMatriz(); //Se elimina cualquier contenido de la matriz
+			txtPath->Text = ofdImportar->FileName;
+
+			//Se utiliza el objeto File para leer el archivo solo cuando el FileName es correcto
+			//Importante haber llamado al namespace System::IO antes de usar File
+			array<String^>^ archivoLineas = File::ReadAllLines(ofdImportar->FileName);
+
+			if (archivoLineas->Length > 0) {
+
+				//Obtiene la cantidad de elementos de la primer linea y ese toma como cantidad de columnas
+				array<String^>^ archivoColumna = archivoLineas[0]->Split(',');
+				if (archivoColumna->Length > 0) {
+					int cantidadColumnas = archivoColumna->Length;
+
+					//Agrega las columnas
+					for (int i = 0; i < cantidadColumnas; i++) {
+						//Crea una columna
+						DataGridViewColumn^ nuevacolumna = gcnew DataGridViewColumn();
+						nuevacolumna->Width = 20;
+						//Le agrega el tipo de columna que será
+						DataGridViewCell^ cellTemplate = gcnew DataGridViewTextBoxCell();
+						nuevacolumna->CellTemplate = cellTemplate;
+						//Inserta la columna
+						dgvMatriz->Columns->Add(nuevacolumna);
+					}
+
+					//Agrega las filas de manera dinámica
+					for (int i = 0; i < archivoLineas->Length; i++) {
+						dgvMatriz->Rows->Add();
+					}
+
+					//Llena el DatagridView
+					for (int i = 0; i < archivoLineas->Length; i++) {
+						array<String^>^ fila = archivoLineas[i]->Split(',');
+						int j = 0;
+
+						//Si alguna fila tiene más o menos objetos no afecta al funcionamiento ya que utiliza la cantidad de elementos de la primer fila
+						while ((j < cantidadColumnas) && (j < fila->Length)) {
+							dgvMatriz->Rows[i]->Cells[j]->Value = fila[j];
+							j++;
+						}
+					}
+				}
+			}
+
+		}
+	}
+};
 }
+
+

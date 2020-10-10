@@ -1,3 +1,4 @@
+#include "MyForm1.h"
 #pragma once
 
 namespace Lab4HansSempe1083920 {
@@ -34,7 +35,9 @@ namespace Lab4HansSempe1083920 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ Ejercicio1;
+	protected:
+
 	protected:
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Label^ label1;
@@ -55,22 +58,23 @@ namespace Lab4HansSempe1083920 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->Ejercicio1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
-			// button1
+			// Ejercicio1
 			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Arial Rounded MT Bold", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->Ejercicio1->Font = (gcnew System::Drawing::Font(L"Arial Rounded MT Bold", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(13, 52);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(183, 65);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"button1";
-			this->button1->UseVisualStyleBackColor = true;
+			this->Ejercicio1->Location = System::Drawing::Point(13, 52);
+			this->Ejercicio1->Name = L"Ejercicio1";
+			this->Ejercicio1->Size = System::Drawing::Size(183, 65);
+			this->Ejercicio1->TabIndex = 0;
+			this->Ejercicio1->Text = L"button1";
+			this->Ejercicio1->UseVisualStyleBackColor = true;
+			this->Ejercicio1->Click += gcnew System::EventHandler(this, &MyForm::Ejercicio1_Click);
 			// 
 			// button2
 			// 
@@ -113,7 +117,7 @@ namespace Lab4HansSempe1083920 {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->Ejercicio1);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->ResumeLayout(false);
@@ -123,11 +127,9 @@ namespace Lab4HansSempe1083920 {
 #pragma endregion
 
 
-
-
-
-
-
-
-	};
+	private: System::Void Ejercicio1_Click(System::Object^ sender, System::EventArgs^ e) {
+		MyForm1^ miNuevaVentana = gcnew MyForm1();
+		miNuevaVentana->ShowDialog();
+	}
+};
 }
