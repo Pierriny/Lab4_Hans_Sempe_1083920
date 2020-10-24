@@ -142,6 +142,9 @@
     <EmbeddedResource Include="MyForm1.resx">
       <DependentUpon>MyForm1.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyForm2.resx">
+      <DependentUpon>MyForm2.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
